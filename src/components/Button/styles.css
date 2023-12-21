@@ -1,0 +1,24 @@
+.nk-button {
+    background-color: #00000061;
+    border-radius: 40px;
+    padding: 10px 60px;
+    font-family: HelveticaMedium;
+    margin-bottom: 40%;
+    font-size: x-large;
+}
+
+.nk-button:hover {
+    background-color: #00000085;
+}
+
+.nk-button:focus {
+    outline: none;
+}
+
+@media (orientation: landscape) {
+    .nk-button {
+        margin-bottom: 10%;
+        padding: 10px 30px;
+        font-size: large;
+    }
+}

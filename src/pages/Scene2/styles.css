@@ -1,0 +1,21 @@
+.s2-button {
+    margin-bottom: 10%;
+}
+
+@media (min-aspect-ratio: 9/16) {
+    .s2-button {
+        margin-bottom: 10%;
+    }
+}
+
+@media (max-aspect-ratio: 9/16) {
+    .s2-button {
+        margin-bottom: 40%;
+    }
+}
+
+@media (orientation: landscape) {
+    .s2-button {
+        margin-bottom: 10px;
+    }
+}
