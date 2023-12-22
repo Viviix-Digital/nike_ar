@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import "./styles.css";
+import { ImageAnimationVariant } from "./config";
 
 const FPS = 25;
 
-const ImageAnimation = ({ images }) => {
+const ImageAnimation = ({ images, className, variant }) => {
   const [imgIndex, setImgIndex] = useState(0);
   const [isReverse, setIsReverse] = useState(false);
-
-  useEffect(() => {
-    console.log(images);
-  }, [images]);
 
   useEffect(() => {
     console.log(imgIndex);
@@ -24,15 +21,23 @@ const ImageAnimation = ({ images }) => {
         if (prevIndex < images.length - 1) {
           return prevIndex + 1;
         }
-        clearInterval(intervalId);
-        setIsReverse(true);
-        return prevIndex;
+        switch (variant) {
+          case ImageAnimationVariant.Loop:
+            return 0;
+          case ImageAnimationVariant.Reverse:
+            clearInterval(intervalId);
+            setIsReverse(true);
+            return prevIndex;
+          default:
+            clearInterval(intervalId);
+            return prevIndex;
+        }
       });
     }, 1000 / FPS);
     return () => {
       clearInterval(intervalId);
     };
-  }, [setImgIndex, images, isReverse]);
+  }, [setImgIndex, images, isReverse, variant]);
 
   useEffect(() => {
     if (!images) return;
@@ -53,7 +58,9 @@ const ImageAnimation = ({ images }) => {
   }, [isReverse, images]);
   return (
     images &&
-    images.length > 0 && <img className="info-img" src={images[imgIndex]} />
+    images.length > 0 && (
+      <img className={`info-img ${className}`} src={images[imgIndex]} />
+    )
   );
 };
 

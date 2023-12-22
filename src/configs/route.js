@@ -8,6 +8,12 @@ const RouteConfig = {
   AR: {
     path: "/ar",
   },
+  Completed: {
+    path: "/completed",
+  },
+  Congratulations: {
+    path: "/congratulations",
+  },
 };
 
 export default RouteConfig;

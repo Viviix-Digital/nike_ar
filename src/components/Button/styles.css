@@ -1,10 +1,11 @@
 .nk-button {
-    background-color: #00000061;
+    background-color: #00000052;
     border-radius: 40px;
-    padding: 10px 60px;
+    padding: 10px 50px;
     font-family: HelveticaMedium;
     margin-bottom: 40%;
-    font-size: x-large;
+    font-size: 1rem;
+    text-transform: uppercase;
 }
 
 .nk-button:hover {
@@ -19,6 +20,6 @@
     .nk-button {
         margin-bottom: 10%;
         padding: 10px 30px;
-        font-size: large;
+        font-size: 1rem;
     }
 }
