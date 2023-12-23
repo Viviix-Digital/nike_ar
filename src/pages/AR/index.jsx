@@ -219,9 +219,7 @@ const AR = () => {
         vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false"
       >
-        <a-assets>
-          <img id="logo" src="./images/nike_logo.jpg" />
-        </a-assets>
+        <a-assets></a-assets>
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
         {Targets.map((item, i) => (
           <a-entity
