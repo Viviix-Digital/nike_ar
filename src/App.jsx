@@ -6,6 +6,8 @@ import Scene2 from "./pages/Scene2";
 import RouteConfig from "./configs/route";
 import Completed from "./pages/Completed";
 import Congratulations from "./pages/Congratulations";
+import { preloadImages } from "./utils/preload";
+import { ImageConfig } from "./configs/images";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,7 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
+  //preloadImages(ImageConfig.Home);
   return <RouterProvider router={router} />;
 }
 
