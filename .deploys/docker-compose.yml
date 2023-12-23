@@ -1,14 +1,14 @@
 version: "3.8"
 
 services:
-  nginx:
-    depends_on:
-      - client
-    restart: always
-    image: nginx
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
     volumes:
       - ./nginx/:/etc/nginx/conf.d
-      - ./html/:/var/www/html
+      - ./dist/:/var/www/html
       - /etc/letsencrypt/:/etc/letsencrypt
     ports:
       - "80:80"
@@ -16,13 +16,6 @@ services:
     networks:
       - app-network
 
-  client:
-    stdin_open: true
-    image: ghcr.io/camhungh/
-    ports:
-      - "5173:5173"
-    networks:
-      - app-network
-
 networks:
   app-network:
+    driver: bridge
