@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import BackgroundContainer from "../../components/BackgroundContainer";
-import BottomBackgroundContainer from "../../components/BottomBackgroundContainner";
-import Button from "../../components/Button";
 import "./styles.css";
 import RouteConfig from "../../configs/route";
+import ImageAnimation from "../../components/ImageAnimation";
+import { ImageAnimationVariant } from "../../components/ImageAnimation/config";
+import { ImageConfig } from "../../configs/images";
+import FullContainer from "../../components/FullContainer";
 
 const Scene2 = () => {
   const navigate = useNavigate();
@@ -11,13 +12,12 @@ const Scene2 = () => {
     navigate(RouteConfig.AR.path);
   };
   return (
-    <BottomBackgroundContainer>
-      <BackgroundContainer variant="scene-2">
-        <Button className="s2-button" onClick={handleOnClick}>
-          Tiếp tục
-        </Button>
-      </BackgroundContainer>
-    </BottomBackgroundContainer>
+    <FullContainer onClick={handleOnClick}>
+      <ImageAnimation
+        images={ImageConfig.Guide}
+        variant={ImageAnimationVariant.Reverse}
+      />
+    </FullContainer>
   );
 };
 

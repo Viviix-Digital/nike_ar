@@ -9,7 +9,7 @@ import Congratulations from "./pages/Congratulations";
 
 const router = createBrowserRouter([
   {
-    path: RouteConfig.Begin.path,
+    path: RouteConfig.Home.path,
     element: <Scene1 />,
   },
   {

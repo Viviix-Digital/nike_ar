@@ -1,5 +1,5 @@
 const RouteConfig = {
-  Begin: {
+  Home: {
     path: "/",
   },
   Guide: {

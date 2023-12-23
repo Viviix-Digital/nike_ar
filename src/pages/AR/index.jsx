@@ -9,12 +9,14 @@ import { ImageConfig } from "../../configs/images";
 import Collection from "../../components/Collection";
 import { useNavigate } from "react-router-dom";
 import RouteConfig from "../../configs/route";
+import Completed from "../Completed";
 
 const ARState = {
   Scanning: "Scanning",
   Information: "Information",
   Collection: "Collection",
   ViewMap: "ViewMap",
+  Completed: "Completed",
 };
 
 const Targets = [
@@ -71,9 +73,34 @@ const AR = () => {
   }, [collectedTargets]);
 
   useEffect(() => {
+    const uiScanning = document.querySelector(
+      ".mindar-ui-overlay.mindar-ui-scanning"
+    );
+    if (!uiScanning) return;
+    if (arState === ARState.Scanning) {
+      uiScanning.style.display = "flex";
+      return;
+    }
+    uiScanning.style.display = "none";
+  }, [arState]);
+
+  useEffect(() => {
     const sceneEl = document.querySelector("a-scene");
     const arSystem = sceneEl.systems["mindar-image-system"];
-    const target = document.querySelector("#target1");
+    const target1 = document.querySelector("#target1");
+    const target2 = document.querySelector("#target2");
+    const target3 = document.querySelector("#target3");
+    const target4 = document.querySelector("#target4");
+    const target5 = document.querySelector("#target5");
+    const target6 = document.querySelector("#target6");
+    const target7 = document.querySelector("#target7");
+
+    // const uiScanningList = document.querySelectorAll(
+    //   ".mindar-ui-overlay.mindar-ui-scanning"
+    // );
+    // for (let i = 0; i < uiScanningList.length; i++) {
+    //   uiScanningList[i].style.display = "none";
+    // }
 
     const handleArReady = (event) => {
       console.log("MindAR is ready");
@@ -86,12 +113,10 @@ const AR = () => {
     const handleTargetFound = (event) => {
       console.log("target found");
       const targetId = event.target.id;
-      setFoundTargetId(targetId);
       setARState((prevState) => {
-        if (prevState === ARState.Scanning) {
-          return ARState.Information;
-        }
-        return prevState;
+        if (prevState !== ARState.Scanning) return prevState;
+        setFoundTargetId(targetId);
+        return ARState.Information;
       });
     };
 
@@ -104,15 +129,41 @@ const AR = () => {
     // arError event triggered when something went wrong. Mostly browser compatbility issue
     sceneEl.addEventListener("arError", handleArError);
     // detect target found
-    target.addEventListener("targetFound", handleTargetFound);
+    target1.addEventListener("targetFound", handleTargetFound);
+    target2.addEventListener("targetFound", handleTargetFound);
+    target3.addEventListener("targetFound", handleTargetFound);
+    target4.addEventListener("targetFound", handleTargetFound);
+    target5.addEventListener("targetFound", handleTargetFound);
+    target6.addEventListener("targetFound", handleTargetFound);
+    target7.addEventListener("targetFound", handleTargetFound);
     // detect target lost
-    target.addEventListener("targetLost", handleTargetLost);
+    target1.addEventListener("targetLost", handleTargetLost);
+    target2.addEventListener("targetLost", handleTargetLost);
+    target3.addEventListener("targetLost", handleTargetLost);
+    target4.addEventListener("targetLost", handleTargetLost);
+    target5.addEventListener("targetLost", handleTargetLost);
+    target6.addEventListener("targetLost", handleTargetLost);
+    target7.addEventListener("targetLost", handleTargetLost);
 
     return () => {
       sceneEl.removeEventListener("arRready", handleArReady);
       sceneEl.removeEventListener("arError", handleArError);
-      target.removeEventListener("targetFound", handleTargetFound);
-      target.removeEventListener("targetLost", handleTargetLost);
+
+      target1.removeEventListener("targetFound", handleTargetFound);
+      target2.removeEventListener("targetFound", handleTargetFound);
+      target3.removeEventListener("targetFound", handleTargetFound);
+      target4.removeEventListener("targetFound", handleTargetFound);
+      target5.removeEventListener("targetFound", handleTargetFound);
+      target6.removeEventListener("targetFound", handleTargetFound);
+      target7.removeEventListener("targetFound", handleTargetFound);
+
+      target1.removeEventListener("targetLost", handleTargetLost);
+      target2.removeEventListener("targetLost", handleTargetLost);
+      target3.removeEventListener("targetLost", handleTargetLost);
+      target4.removeEventListener("targetLost", handleTargetLost);
+      target5.removeEventListener("targetLost", handleTargetLost);
+      target6.removeEventListener("targetLost", handleTargetLost);
+      target7.removeEventListener("targetLost", handleTargetLost);
     };
   }, []);
 
@@ -120,15 +171,26 @@ const AR = () => {
   useEffect(() => {
     if (arState !== ARState.Collection) return;
     if (!isCollectedFoundTarget) return;
-
+    let timer;
     // TODO: testing with 1 target
-    if (collectedTargets.length < 1) {
-      setARState(ARState.Scanning);
+    if (collectedTargets.length < 7) {
+      timer = setTimeout(() => {
+        setARState(ARState.Scanning);
+        setIsCollectedFoundTarget(false);
+        setFoundTargetId(undefined);
+      }, 1000);
     } else {
-      navigate(RouteConfig.Completed.path);
+      // navigate(RouteConfig.Completed.path);
+      setARState(ARState.Completed);
+      setIsCollectedFoundTarget(false);
+      setFoundTargetId(undefined);
     }
-    setIsCollectedFoundTarget(false);
-    setFoundTargetId(undefined);
+
+    return () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
   }, [isCollectedFoundTarget, arState, collectedTargets.length, navigate]);
 
   const handleOnInformationNext = () => {
@@ -151,7 +213,7 @@ const AR = () => {
   return (
     <>
       <a-scene
-        mindar-image="imageTargetSrc: ./files/target_1.mind;  uiLoading: no; uiError: no; uiScanning: no;"
+        mindar-image="imageTargetSrc: ./files/targets.mind;  uiLoading: yes; uiError: yes; uiScanning: yes;"
         color-space="sRGB"
         renderer="colorManagement: true, physicallyCorrectLights"
         vr-mode-ui="enabled: false"
@@ -161,10 +223,13 @@ const AR = () => {
           <img id="logo" src="./images/nike_logo.jpg" />
         </a-assets>
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-        <a-entity
-          id={Targets[0].Id}
-          mindar-image-target="targetIndex: 0"
-        ></a-entity>
+        {Targets.map((item, i) => (
+          <a-entity
+            key={item.Id}
+            id={item.Id}
+            mindar-image-target={`targetIndex: ${i}`}
+          ></a-entity>
+        ))}
       </a-scene>
       <div className="ar-content-container">
         {arState === ARState.Information && (
@@ -187,6 +252,7 @@ const AR = () => {
             score={`${collectedTargets ? collectedTargets.length : 0}/7`}
           />
         )}
+        {arState === ARState.Completed && <Completed />}
       </div>
     </>
   );

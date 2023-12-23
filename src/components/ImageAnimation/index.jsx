@@ -9,11 +9,6 @@ const ImageAnimation = ({ images, className, variant }) => {
   const [isReverse, setIsReverse] = useState(false);
 
   useEffect(() => {
-    console.log(imgIndex);
-    if (images && images.length > 0) console.log(images[imgIndex]);
-  }, [imgIndex, images]);
-
-  useEffect(() => {
     if (!images) return;
     if (isReverse) return;
     const intervalId = setInterval(() => {

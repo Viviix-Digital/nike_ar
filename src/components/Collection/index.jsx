@@ -40,9 +40,11 @@ const Collection = ({
         images={images}
         variant={ImageAnimationVariant.Loop}
       />
-      <Button className={"collect-button"} onClick={handleOnClick}>
-        Thu thập
-      </Button>
+      {!isClickedCollect && (
+        <Button className={"collect-button"} onClick={handleOnClick}>
+          Thu thập
+        </Button>
+      )}
       <ScoreBox score={score} />
     </div>
   );
