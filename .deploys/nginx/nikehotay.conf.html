@@ -1,0 +1,15 @@
+server {
+  server_name www.nikehotay.com nikehotay.com;
+
+  location ~ /.well-known/acme-challenge {
+    allow all;
+    root /var/www/html;
+  }
+
+  location / {
+   rewrite ^ https://$host$request_uri? permanent;
+  }
+
+  listen 80;
+  listen [::]:80;
+}
