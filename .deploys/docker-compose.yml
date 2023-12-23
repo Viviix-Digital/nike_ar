@@ -7,8 +7,8 @@ services:
     restart: unless-stopped
     tty: true
     volumes:
-      - ./nginx/:/etc/nginx/conf.d
-      - ./dist/:/var/www/html
+      - ./nginx:/etc/nginx/conf.d
+      - ./dist:/var/www/html
       - /etc/letsencrypt/:/etc/letsencrypt
     ports:
       - "80:80"
