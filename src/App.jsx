@@ -32,7 +32,24 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  //preloadImages(ImageConfig.Home);
+  preloadImages(ImageConfig.Home);
+  preloadImages(ImageConfig.Guide);
+  preloadImages(ImageConfig.Infomation1);
+  preloadImages(ImageConfig.Infomation2);
+  preloadImages(ImageConfig.Infomation3);
+  preloadImages(ImageConfig.Infomation4);
+  preloadImages(ImageConfig.Infomation5);
+  preloadImages(ImageConfig.Infomation6);
+  preloadImages(ImageConfig.Infomation7);
+  preloadImages(ImageConfig.Nike1);
+  preloadImages(ImageConfig.Nike2);
+  preloadImages(ImageConfig.Nike3);
+  preloadImages(ImageConfig.Nike4);
+  preloadImages(ImageConfig.Nike5);
+  preloadImages(ImageConfig.Nike6);
+  preloadImages(ImageConfig.Nike7);
+  preloadImages(ImageConfig.Completed);
+  preloadImages(ImageConfig.Congratulations);
   return <RouterProvider router={router} />;
 }
 
