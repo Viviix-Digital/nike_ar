@@ -6,7 +6,7 @@ import { ImageAnimationVariant } from "../ImageAnimation/config";
 import ScoreBox from "../ScoreBox";
 import "./styles.css";
 
-const ViewMap = ({ collectedTargets }) => {
+const ViewMap = ({ collectedTargets, onClick }) => {
   return (
     <div className="map-container">
       <div className="map-content">
@@ -23,7 +23,9 @@ const ViewMap = ({ collectedTargets }) => {
             variant={ImageAnimationVariant.Loop}
           />
         </div>
-        <Button className={"map-button"}>Tiếp tục</Button>
+        <Button className={"map-button"} onClick={onClick}>
+          Tiếp tục
+        </Button>
       </div>
       <ScoreBox score={`${collectedTargets.length}/7`} />
     </div>

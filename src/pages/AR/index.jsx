@@ -211,12 +211,15 @@ const AR = () => {
   };
 
   const handleOnScoreClick = () => {
-    console.log("click");
     setARState((prevState) => {
       console.log(prevState);
       if (prevState === ARState.Scanning) return ARState.ViewMap;
       return prevState;
     });
+  };
+
+  const handleOnMapClick = () => {
+    setARState(ARState.Scanning);
   };
 
   return (
@@ -267,7 +270,10 @@ const AR = () => {
           />
         )}
         {arState === ARState.ViewMap && (
-          <ViewMap collectedTargets={collectedTargets} />
+          <ViewMap
+            collectedTargets={collectedTargets}
+            onClick={handleOnMapClick}
+          />
         )}
       </div>
     </>
