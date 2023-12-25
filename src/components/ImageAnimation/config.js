@@ -1,5 +1,6 @@
 export const ImageAnimationVariant = {
-  Reverse: "reverse",
-  Loop: "loop",
   Once: "once",
+  Loop: "loop",
+  Reverse: "reverse",
+  ReverseAt: "reverse_at",
 };

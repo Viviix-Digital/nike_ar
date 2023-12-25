@@ -16,7 +16,8 @@ const Scene1 = () => {
     <FullContainer onClick={handleOnClick}>
       <ImageAnimation
         images={ImageConfig.Home}
-        variant={ImageAnimationVariant.Reverse}
+        variant={ImageAnimationVariant.ReverseAt}
+        reverseAt={90}
       />
     </FullContainer>
   );
