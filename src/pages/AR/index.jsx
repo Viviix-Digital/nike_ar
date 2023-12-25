@@ -2,13 +2,11 @@ import "mind-ar/dist/mindar-image.prod";
 import "aframe";
 import "mind-ar/dist/mindar-image-aframe.prod";
 import { useEffect, useState } from "react";
-import Scene1 from "../Scene1";
 import Information from "../../components/Information";
 import "./styles.css";
 import { ImageConfig } from "../../configs/images";
 import Collection from "../../components/Collection";
 import { useNavigate } from "react-router-dom";
-import RouteConfig from "../../configs/route";
 import Completed from "../Completed";
 
 const ARState = {
@@ -181,9 +179,11 @@ const AR = () => {
       }, 1000);
     } else {
       // navigate(RouteConfig.Completed.path);
-      setARState(ARState.Completed);
-      setIsCollectedFoundTarget(false);
-      setFoundTargetId(undefined);
+      timer = setTimeout(() => {
+        setARState(ARState.Completed);
+        setIsCollectedFoundTarget(false);
+        setFoundTargetId(undefined);
+      }, 1000);
     }
 
     return () => {

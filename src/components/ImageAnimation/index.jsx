@@ -4,7 +4,7 @@ import { ImageAnimationVariant } from "./config";
 
 const FPS = 25;
 
-const ImageAnimation = ({ images, className, variant, reverseAt = 0 }) => {
+const ImageAnimation = ({ images, variant, reverseAt = 0 }) => {
   const [imgIndex, setImgIndex] = useState(0);
   const [isReverse, setIsReverse] = useState(false);
 
@@ -66,9 +66,7 @@ const ImageAnimation = ({ images, className, variant, reverseAt = 0 }) => {
       {images.map((item) => (
         <img
           key={item}
-          className={`info-img ${className ? className : ""} ${
-            item === images[imgIndex] ? "show" : ""
-          }`}
+          className={`info-img ${item === images[imgIndex] ? "show" : ""}`}
           src={item}
         />
       ))}

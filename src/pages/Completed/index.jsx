@@ -15,7 +15,8 @@ const Completed = () => {
     <FullContainer onClick={handleOnClick}>
       <ImageAnimation
         images={ImageConfig.Completed}
-        variant={ImageAnimationVariant.Reverse}
+        variant={ImageAnimationVariant.ReverseAt}
+        reverseAt={107}
       />
     </FullContainer>
   );

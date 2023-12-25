@@ -2,14 +2,14 @@ import { convertNumberToStrWithLen } from "../utils/string";
 
 const NUMBER_CHARACTER_LENGTH = 5;
 
-function generateImageUrls(prefixPath, len) {
+function generateImageUrls(prefixPath, len, version = 0) {
   const images = [];
   for (let i = 0; i <= len; i++) {
     images.push(
       `${prefixPath}${convertNumberToStrWithLen(
         i,
         NUMBER_CHARACTER_LENGTH
-      )}.webp`
+      )}.webp?v=${version}`
     );
   }
   return images;
@@ -17,7 +17,7 @@ function generateImageUrls(prefixPath, len) {
 
 export const ImageConfig = {
   Infomation1: generateImageUrls("/images/info1/", 150),
-  Infomation2: generateImageUrls("/images/info2/", 205),
+  Infomation2: generateImageUrls("/images/info2/", 210),
   Infomation3: generateImageUrls("/images/info3/", 210),
   Infomation4: generateImageUrls("/images/info4/", 210),
   Infomation5: generateImageUrls("/images/info5/", 210),
@@ -32,10 +32,7 @@ export const ImageConfig = {
   Nike7: generateImageUrls("/images/n7/", 30),
   NikeAlmostCompleted: [],
   Home: generateImageUrls("/images/kv-s1/", 232),
-  Guide: generateImageUrls("/images/kv-s2/", 250),
+  Guide: generateImageUrls("/images/kv-s2/", 249),
   Completed: generateImageUrls("/images/kv-s6/", 250),
-  Congratulations: generateImageUrls("/images/kv-s7/", 250),
-  NextButton1: generateImageUrls("/images/tiep-tuc/", 124),
-  NextButton2: generateImageUrls("/images/tiep-tuc-2/", 124),
-  ReceiveButton: generateImageUrls("/images/nhan-qua/", 100),
+  Congratulations: generateImageUrls("/images/kv-s7/", 249),
 };

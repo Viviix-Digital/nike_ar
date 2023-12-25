@@ -3,7 +3,7 @@ import "./styles.css";
 import Button from "../Button";
 import { ImageAnimationVariant } from "../ImageAnimation/config";
 import { useEffect, useState } from "react";
-import ScoreBox from "../ScoreBox/iindex";
+import ScoreBox from "../ScoreBox";
 
 const Collection = ({
   targetId,
@@ -35,11 +35,9 @@ const Collection = ({
 
   return (
     <div className="collection-container">
-      <ImageAnimation
-        className={isClickedCollect && "move-to-top-right"}
-        images={images}
-        variant={ImageAnimationVariant.Loop}
-      />
+      <div className={`${isClickedCollect ? "move-to-top-right" : ""}`}>
+        <ImageAnimation images={images} variant={ImageAnimationVariant.Loop} />
+      </div>
       {!isClickedCollect && (
         <Button className={"collect-button"} onClick={handleOnClick}>
           Thu thập
