@@ -8,8 +8,11 @@ import { ImageConfig } from "../../configs/images";
 import Collection from "../../components/Collection";
 import { useNavigate } from "react-router-dom";
 import Completed from "../Completed";
+import ScoreBox from "../../components/ScoreBox";
+import ViewMap from "../../components/ViewMap";
 
 const ARState = {
+  Initialize: "Initialize",
   Scanning: "Scanning",
   Information: "Information",
   Collection: "Collection",
@@ -57,14 +60,10 @@ const Targets = [
 
 const AR = () => {
   const navigate = useNavigate();
-  const [arState, setARState] = useState(ARState.Scanning);
+  const [arState, setARState] = useState(ARState.Initialize);
   const [foundTargetId, setFoundTargetId] = useState();
   const [isCollectedFoundTarget, setIsCollectedFoundTarget] = useState(false);
   const [collectedTargets, setCollectedTargets] = useState([]);
-
-  useEffect(() => {
-    console.log(arState);
-  }, [arState]);
 
   useEffect(() => {
     console.log(collectedTargets);
@@ -102,6 +101,7 @@ const AR = () => {
 
     const handleArReady = (event) => {
       console.log("MindAR is ready");
+      setARState(ARState.Scanning);
     };
 
     const handleArError = (event) => {
@@ -170,7 +170,7 @@ const AR = () => {
     if (arState !== ARState.Collection) return;
     if (!isCollectedFoundTarget) return;
     let timer;
-    // TODO: testing with 1 target
+
     if (collectedTargets.length < 7) {
       timer = setTimeout(() => {
         setARState(ARState.Scanning);
@@ -207,6 +207,15 @@ const AR = () => {
       }
 
       return [...prevTargets, targetId];
+    });
+  };
+
+  const handleOnScoreClick = () => {
+    console.log("click");
+    setARState((prevState) => {
+      console.log(prevState);
+      if (prevState === ARState.Scanning) return ARState.ViewMap;
+      return prevState;
     });
   };
 
@@ -251,6 +260,15 @@ const AR = () => {
           />
         )}
         {arState === ARState.Completed && <Completed />}
+        {arState === ARState.Scanning && (
+          <ScoreBox
+            score={`${collectedTargets ? collectedTargets.length : 0}/7`}
+            onClick={handleOnScoreClick}
+          />
+        )}
+        {arState === ARState.ViewMap && (
+          <ViewMap collectedTargets={collectedTargets} />
+        )}
       </div>
     </>
   );

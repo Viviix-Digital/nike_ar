@@ -4,9 +4,35 @@ import { ImageAnimationVariant } from "./config";
 
 const FPS = 25;
 
-const ImageAnimation = ({ images, variant, reverseAt = 0 }) => {
+const ImageAnimation = ({
+  images,
+  className,
+  variant,
+  reverseAt = 0,
+  onFinish,
+}) => {
   const [imgIndex, setImgIndex] = useState(0);
   const [isReverse, setIsReverse] = useState(false);
+  const [isFinish, setIsFinish] = useState(false);
+
+  useEffect(() => {
+    if (!isFinish) return;
+    if (!onFinish) return;
+    onFinish();
+  }, [isFinish, onFinish]);
+
+  useEffect(() => {
+    if (isFinish) return;
+    switch (variant) {
+      case ImageAnimationVariant.ReverseAt:
+        if (imgIndex < reverseAt) return;
+        break;
+      default:
+        if (imgIndex < images.length) return;
+        break;
+    }
+    setIsFinish(true);
+  }, [images.length, imgIndex, isFinish, reverseAt, setIsFinish, variant]);
 
   useEffect(() => {
     if (!images) return;
@@ -66,7 +92,9 @@ const ImageAnimation = ({ images, variant, reverseAt = 0 }) => {
       {images.map((item) => (
         <img
           key={item}
-          className={`info-img ${item === images[imgIndex] ? "show" : ""}`}
+          className={`info-img ${className ? className : undefined} ${
+            item === images[imgIndex] ? "show" : ""
+          }`}
           src={item}
         />
       ))}

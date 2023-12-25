@@ -20,3 +20,7 @@
   height: 100vh;
   font-family: HelveticaRegular;
 }
+
+.mindar-ui-overlay {
+  pointer-events: none;
+}

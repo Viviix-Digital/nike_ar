@@ -5,18 +5,26 @@ import ImageAnimation from "../../components/ImageAnimation";
 import { ImageAnimationVariant } from "../../components/ImageAnimation/config";
 import { ImageConfig } from "../../configs/images";
 import FullContainer from "../../components/FullContainer";
+import useRemoveMindAR from "../../utils/hooks/useRemoveMindAR";
+import useWaitFinish from "../../utils/hooks/useWaitFinish";
 
 const Scene2 = () => {
   const navigate = useNavigate();
+  const { isFinish, onFinish } = useWaitFinish();
+
+  useRemoveMindAR();
+
   const handleOnClick = () => {
     navigate(RouteConfig.AR.path);
   };
+
   return (
-    <FullContainer onClick={handleOnClick}>
+    <FullContainer onClick={isFinish ? handleOnClick : undefined}>
       <ImageAnimation
         images={ImageConfig.Guide}
         variant={ImageAnimationVariant.ReverseAt}
         reverseAt={150}
+        onFinish={onFinish}
       />
     </FullContainer>
   );
