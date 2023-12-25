@@ -28,7 +28,7 @@ const ImageAnimation = ({
         if (imgIndex < reverseAt) return;
         break;
       default:
-        if (imgIndex < images.length) return;
+        if (imgIndex < images.length - 1) return;
         break;
     }
     setIsFinish(true);
