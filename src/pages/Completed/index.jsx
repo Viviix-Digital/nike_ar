@@ -5,8 +5,8 @@ import { ImageConfig } from "../../configs/images";
 import RouteConfig from "../../configs/route";
 import FullContainer from "../../components/FullContainer";
 import useWaitFinish from "../../utils/hooks/useWaitFinish";
-import ImagesButton from "../../components/ImagesButton";
 import "./styles.css";
+import FixedBottomNextButton from "../../components/FixedBottomNextButton";
 
 const Completed = () => {
   const navigate = useNavigate();
@@ -24,8 +24,7 @@ const Completed = () => {
         onFinish={onFinish}
       />
       {isFinish && (
-        <ImagesButton
-          className="complete-button"
+        <FixedBottomNextButton
           images={ImageConfig.Button2}
           onClick={handleOnClick}
         />

@@ -7,7 +7,7 @@ import { ImageConfig } from "../../configs/images";
 import FullContainer from "../../components/FullContainer";
 import useRemoveMindAR from "../../utils/hooks/useRemoveMindAR";
 import useWaitFinish from "../../utils/hooks/useWaitFinish";
-import ImagesButton from "../../components/ImagesButton";
+import FixedBottomNextButton from "../../components/FixedBottomNextButton";
 
 const Scene2 = () => {
   const navigate = useNavigate();
@@ -28,8 +28,7 @@ const Scene2 = () => {
         onFinish={onFinish}
       />
       {isFinish && (
-        <ImagesButton
-          className="s2-button"
+        <FixedBottomNextButton
           images={ImageConfig.Button1}
           onClick={handleOnClick}
         />

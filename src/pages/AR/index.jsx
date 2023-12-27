@@ -10,6 +10,7 @@ import Completed from "../Completed";
 import ScoreBox from "../../components/ScoreBox";
 import ViewMap from "../../components/ViewMap";
 import { Targets } from "../../configs/targets";
+import useCollectedTargets from "../../utils/hooks/useCollectedTargets";
 
 const ARState = {
   Initialize: "Initialize",
@@ -25,7 +26,7 @@ const AR = () => {
   const [arState, setARState] = useState(ARState.Initialize);
   const [foundTargetId, setFoundTargetId] = useState();
   const [isCollectedFoundTarget, setIsCollectedFoundTarget] = useState(false);
-  const [collectedTargets, setCollectedTargets] = useState([]);
+  const { collectedTargets, addTarget } = useCollectedTargets();
 
   useEffect(() => {
     console.log(collectedTargets);
@@ -45,7 +46,7 @@ const AR = () => {
 
   useEffect(() => {
     const sceneEl = document.querySelector("a-scene");
-    const arSystem = sceneEl.systems["mindar-image-system"];
+    // const arSystem = sceneEl.systems["mindar-image-system"];
     const target1 = document.querySelector("#target1");
     const target2 = document.querySelector("#target2");
     const target3 = document.querySelector("#target3");
@@ -61,12 +62,12 @@ const AR = () => {
     //   uiScanningList[i].style.display = "none";
     // }
 
-    const handleArReady = (event) => {
+    const handleArReady = () => {
       console.log("MindAR is ready");
       setARState(ARState.Scanning);
     };
 
-    const handleArError = (event) => {
+    const handleArError = () => {
       console.log("MindAR failed to start");
     };
 
@@ -80,7 +81,7 @@ const AR = () => {
       });
     };
 
-    const handleTargetLost = (event) => {
+    const handleTargetLost = () => {
       console.log("target lost");
     };
 
@@ -160,21 +161,11 @@ const AR = () => {
   };
 
   const handleOnCollect = (targetId) => {
-    setCollectedTargets((prevTargets) => {
-      if (!prevTargets) return [targetId];
-
-      const foundIndex = prevTargets.findIndex((item) => item === targetId);
-      if (foundIndex > -1) {
-        return prevTargets;
-      }
-
-      return [...prevTargets, targetId];
-    });
+    addTarget(targetId);
   };
 
   const handleOnScoreClick = () => {
     setARState((prevState) => {
-      console.log(prevState);
       if (prevState === ARState.Scanning) return ARState.ViewMap;
       return prevState;
     });

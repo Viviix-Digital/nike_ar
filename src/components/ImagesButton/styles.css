@@ -1,6 +1,4 @@
 .imgs-button-container {
-    -webkit-transform: scale(0);
-    transform: scale(0);
 }
 
 .imgs-button-content {
@@ -11,12 +9,6 @@
     align-content: center;
      transform: scale(1);
     transition: 200ms;
-}
-
-.show-button {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    transition: 1s;
 }
 
 .touch-area {

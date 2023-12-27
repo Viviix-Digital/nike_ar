@@ -1,6 +1,8 @@
 .s1-button {
     position: fixed;
     bottom: 20%;
+    left: 0;
+    right: 0;
 }
 
 .s1-button-container {

@@ -8,12 +8,8 @@
 .collect-button {
     position: fixed;
     top: 65%;
-    left: 50%;
-    width: 200px;
-    transform: translate(-50%, 50%) scale(1);
-    transition: 0.2s;
 }
-
+/* 
 @-webkit-keyframes collected-button-anim {
     0% {
         -webkit-transform: scale(1) translate(-50%, 50%);
@@ -45,7 +41,7 @@
 .collected-button {
     transform: translate(-50%, 50%) scale(0.9);
     transition: 0.2s;
-}
+} */
 
 .move-to-top-right {
     transform: translate(40vw,-48vh) scale(0);

@@ -1,29 +1,20 @@
-import { useEffect, useState } from "react";
 import ImageAnimation from "../ImageAnimation";
 import { ImageAnimationVariant } from "../ImageAnimation/config";
 import "./styles.css";
 import useTimeoutClick from "../../utils/hooks/useTimeoutClick";
+import useTimeoutInit from "../../utils/hooks/useTimeoutInit";
 
-const ImagesButton = ({ images, className, onClick }) => {
-  const [isInit, setIsInit] = useState(false);
+const ImagesButton = ({ images, className, onClick, loopAt }) => {
+  const { isInit } = useTimeoutInit(200);
   const { isStartWait, onTimeoutClick } = useTimeoutClick({
     timeout: 400,
     onExecute: onClick,
   });
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsInit(true);
-    }, 200);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
-
   return (
     <div
       className={`imgs-button-container ${
-        isInit ? "show-button" : undefined
+        isInit ? "show-button" : "invisible-button"
       } ${className}`}
     >
       <div
@@ -33,7 +24,8 @@ const ImagesButton = ({ images, className, onClick }) => {
       >
         <ImageAnimation
           images={images}
-          variant={ImageAnimationVariant.Reverse}
+          variant={ImageAnimationVariant.LoopAt}
+          loopAt={loopAt}
         />
         <div className="touch-area" onClick={onTimeoutClick} />
       </div>
