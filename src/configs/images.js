@@ -16,13 +16,13 @@ function generateImageUrls(prefixPath, start, end, version = 0) {
 }
 
 export const ImageConfig = {
-  Infomation1: generateImageUrls("/images/info1/", 0, 150),
-  Infomation2: generateImageUrls("/images/info2/", 0, 210),
-  Infomation3: generateImageUrls("/images/info3/", 0, 210),
-  Infomation4: generateImageUrls("/images/info4/", 0, 210),
-  Infomation5: generateImageUrls("/images/info5/", 0, 210),
-  Infomation6: generateImageUrls("/images/info6/", 0, 210),
-  Infomation7: generateImageUrls("/images/info7/", 0, 210),
+  Infomation1: generateImageUrls("/images/info1/", 0, 150, 1),
+  Infomation2: generateImageUrls("/images/info2/", 0, 210, 1),
+  Infomation3: generateImageUrls("/images/info3/", 0, 210, 1),
+  Infomation4: generateImageUrls("/images/info4/", 0, 210, 1),
+  Infomation5: generateImageUrls("/images/info5/", 0, 210, 1),
+  Infomation6: generateImageUrls("/images/info6/", 0, 210, 1),
+  Infomation7: generateImageUrls("/images/info7/", 0, 210, 1),
   Nike1: generateImageUrls("/images/n1/", 0, 30, 1),
   Nike2: generateImageUrls("/images/n2/", 0, 30, 1),
   Nike3: generateImageUrls("/images/n3/", 0, 30, 1),
@@ -37,6 +37,7 @@ export const ImageConfig = {
   Button1: generateImageUrls("/images/button_1/", 1, 124),
   Button2: generateImageUrls("/images/button_2/", 1, 124),
   Button3: generateImageUrls("/images/button_3/", 0, 100),
+  Button4: generateImageUrls("/images/button_4/", 0, 249),
   ScoreEffect: generateImageUrls("/images/score_effect/", 0, 25),
   Pice1: generateImageUrls("/images/r1/", 0, 30),
   Pice2: generateImageUrls("/images/r2/", 0, 30),

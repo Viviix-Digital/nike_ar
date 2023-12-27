@@ -9,6 +9,7 @@ const ImageAnimation = ({
   className,
   variant,
   reverseAt = 0,
+  loopAt = 0,
   onFinish,
 }) => {
   const [imgIndex, setImgIndex] = useState(0);
@@ -45,6 +46,8 @@ const ImageAnimation = ({
         switch (variant) {
           case ImageAnimationVariant.Loop:
             return 0;
+          case ImageAnimationVariant.LoopAt:
+            return loopAt;
           case ImageAnimationVariant.Reverse:
           case ImageAnimationVariant.ReverseAt:
             clearInterval(intervalId);
@@ -59,7 +62,7 @@ const ImageAnimation = ({
     return () => {
       clearInterval(intervalId);
     };
-  }, [setImgIndex, images, isReverse, variant]);
+  }, [setImgIndex, images, isReverse, variant, loopAt]);
 
   useEffect(() => {
     if (!images) return;

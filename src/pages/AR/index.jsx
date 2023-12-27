@@ -187,7 +187,7 @@ const AR = () => {
   return (
     <>
       <a-scene
-        mindar-image="imageTargetSrc: ./files/targets.mind;  uiLoading: yes; uiError: yes; uiScanning: yes;"
+        mindar-image="imageTargetSrc: ./files/targets.mind?v=1;  uiLoading: yes; uiError: yes; uiScanning: yes;"
         color-space="sRGB"
         renderer="colorManagement: true, physicallyCorrectLights"
         vr-mode-ui="enabled: false"
