@@ -4,12 +4,12 @@ import "mind-ar/dist/mindar-image-aframe.prod";
 import { useEffect, useState } from "react";
 import Information from "../../components/Information";
 import "./styles.css";
-import { ImageConfig } from "../../configs/images";
 import Collection from "../../components/Collection";
 import { useNavigate } from "react-router-dom";
 import Completed from "../Completed";
 import ScoreBox from "../../components/ScoreBox";
 import ViewMap from "../../components/ViewMap";
+import { Targets } from "../../configs/targets";
 
 const ARState = {
   Initialize: "Initialize",
@@ -19,44 +19,6 @@ const ARState = {
   ViewMap: "ViewMap",
   Completed: "Completed",
 };
-
-const Targets = [
-  {
-    Id: "target1",
-    InfoImages: ImageConfig.Infomation1,
-    NikeImages: ImageConfig.Nike1,
-  },
-  {
-    Id: "target2",
-    InfoImages: ImageConfig.Infomation2,
-    NikeImages: ImageConfig.Nike2,
-  },
-  {
-    Id: "target3",
-    InfoImages: ImageConfig.Infomation3,
-    NikeImages: ImageConfig.Nike3,
-  },
-  {
-    Id: "target4",
-    InfoImages: ImageConfig.Infomation4,
-    NikeImages: ImageConfig.Nike4,
-  },
-  {
-    Id: "target5",
-    InfoImages: ImageConfig.Infomation5,
-    NikeImages: ImageConfig.Nike5,
-  },
-  {
-    Id: "target6",
-    InfoImages: ImageConfig.Infomation6,
-    NikeImages: ImageConfig.Nike6,
-  },
-  {
-    Id: "target7",
-    InfoImages: ImageConfig.Infomation7,
-    NikeImages: ImageConfig.Nike7,
-  },
-];
 
 const AR = () => {
   const navigate = useNavigate();

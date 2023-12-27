@@ -7,6 +7,7 @@ import { ImageConfig } from "../../configs/images";
 import FullContainer from "../../components/FullContainer";
 import useRemoveMindAR from "../../utils/hooks/useRemoveMindAR";
 import useWaitFinish from "../../utils/hooks/useWaitFinish";
+import ImagesButton from "../../components/ImagesButton";
 
 const Scene2 = () => {
   const navigate = useNavigate();
@@ -19,13 +20,20 @@ const Scene2 = () => {
   };
 
   return (
-    <FullContainer onClick={isFinish ? handleOnClick : undefined}>
+    <FullContainer>
       <ImageAnimation
         images={ImageConfig.Guide}
         variant={ImageAnimationVariant.ReverseAt}
         reverseAt={150}
         onFinish={onFinish}
       />
+      {isFinish && (
+        <ImagesButton
+          className="s2-button"
+          images={ImageConfig.Button1}
+          onClick={handleOnClick}
+        />
+      )}
     </FullContainer>
   );
 };

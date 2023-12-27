@@ -1,0 +1,35 @@
+.imgs-button-container {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+.imgs-button-content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+     transform: scale(1);
+    transition: 200ms;
+}
+
+.show-button {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    transition: 1s;
+}
+
+.mouse-over {
+    transform: scale(0.9);
+    transition: 200ms;
+}
+
+.touch-area {
+    position: absolute;
+    top: 30%;
+    bottom: 30%;
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9;
+}

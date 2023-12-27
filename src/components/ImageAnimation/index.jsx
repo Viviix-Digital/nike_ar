@@ -68,7 +68,7 @@ const ImageAnimation = ({
       setImgIndex((prevIndex) => {
         switch (variant) {
           case ImageAnimationVariant.Reverse:
-            if (prevIndex >= 0) {
+            if (prevIndex > 0) {
               return prevIndex - 1;
             }
             break;

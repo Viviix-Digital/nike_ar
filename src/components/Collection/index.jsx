@@ -38,11 +38,14 @@ const Collection = ({
       <div className={`${isClickedCollect ? "move-to-top-right" : ""}`}>
         <ImageAnimation images={images} variant={ImageAnimationVariant.Loop} />
       </div>
-      {!isClickedCollect && (
-        <Button className={"collect-button"} onClick={handleOnClick}>
-          Thu thập
-        </Button>
-      )}
+      <Button
+        className={`collect-button ${
+          isClickedCollect ? "collected-button-anim" : undefined
+        }`}
+        onClick={handleOnClick}
+      >
+        Thu thập
+      </Button>
       <ScoreBox score={score} />
     </div>
   );

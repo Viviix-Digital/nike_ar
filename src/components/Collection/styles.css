@@ -10,11 +10,44 @@
     top: 65%;
     left: 50%;
     width: 200px;
-    transform: translate(-50%, 50%);
+    transform: translate(-50%, 50%) scale(1);
+    transition: 0.2s;
+}
 
+@-webkit-keyframes collected-button-anim {
+    0% {
+        -webkit-transform: scale(1) translate(-50%, 50%);
+        
+        opacity: 1;
+    }
+    50% {
+        -webkit-transform: scale(0.9) translate(-50%, 50%);
+        opacity: 0,5;
+    }
+    100% {
+        -webkit-transform: scale(1) translate(-50%, 50%);
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes collected-button-anim  {
+    0% {transform: scale(1) translate(-50%, 50%); opacity: 1;}
+    50% {transform: scale(0.9) translate(-50%, 50%); opacity: 0,5;}
+    100% {transform: scale(1) translate(-50%, 50%);  opacity: 0; display: none;}
+}
+.collected-button-anim {
+    animation-name: collected-button-anim;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+}
+
+.collected-button {
+    transform: translate(-50%, 50%) scale(0.9);
+    transition: 0.2s;
 }
 
 .move-to-top-right {
-    transform: translate(50vw,-50vh) scale(0);
+    transform: translate(40vw,-48vh) scale(0);
     transition-duration: 500ms;
 }

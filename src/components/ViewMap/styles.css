@@ -41,9 +41,52 @@
     margin-bottom: 0px;
 }
 
-.target-img-on-map {
-    width: 10%;
+.target1-on-map {
+    width: 6%;
     position: absolute;
-    top: -10%;
+    top: 35%;
+    right: 17%;
+}
+
+.target2-on-map {
+    width: 6%;
+    position: absolute;
+    top: 1%;
+    left: 48%;
+}
+
+.target3-on-map {
+    width: 6%;
+    position: absolute;
+    top: 32%;
+    left: 28%;
+}
+
+.target4-on-map {
+    width: 6%;
+    position: absolute;
+    top: 35%;
+    right: 48%;
+}
+
+.target5-on-map {
+    width: 6%;
+    position: absolute;
+    bottom: 20%;
+    left: 40%;
+}
+
+.target6-on-map {
+    width: 6%;
+    position: absolute;
+    right: 37%;
+    bottom: 20%;
+}
+
+.target7-on-map {
+    width: 6%;
+    position: absolute;
+    bottom: 32%;
+    right: 21%;
 }
 
