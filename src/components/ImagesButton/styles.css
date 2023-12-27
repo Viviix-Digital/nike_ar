@@ -19,11 +19,6 @@
     transition: 1s;
 }
 
-.mouse-over {
-    transform: scale(0.9);
-    transition: 200ms;
-}
-
 .touch-area {
     position: absolute;
     top: 30%;

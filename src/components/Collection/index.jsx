@@ -39,10 +39,9 @@ const Collection = ({
         <ImageAnimation images={images} variant={ImageAnimationVariant.Loop} />
       </div>
       <Button
-        className={`collect-button ${
-          isClickedCollect ? "collected-button-anim" : undefined
-        }`}
+        className={`collect-button`}
         onClick={handleOnClick}
+        variant="anim-2"
       >
         Thu thập
       </Button>

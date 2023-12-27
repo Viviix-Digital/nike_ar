@@ -28,3 +28,59 @@
 .mindar-ui-overlay {
   pointer-events: none;
 }
+
+@-webkit-keyframes click-anim {
+    0% {
+        -webkit-transform: scale(1);
+        
+        opacity: 1;
+    }
+    50% {
+        -webkit-transform: scale(0.9);
+        opacity: 0,5;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes click-anim {
+    0% {transform: scale(1) ; opacity: 1;}
+    50% {transform: scale(0.9); opacity: 0,5;}
+    100% {transform: scale(1);  opacity: 0;}
+}
+
+.click-anim {
+    animation-name: click-anim;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes click-anim-2 {
+    0% {
+        -webkit-transform: scale(1) translate(-50%, 50%);
+        
+        opacity: 1;
+    }
+    50% {
+        -webkit-transform: scale(0.9) translate(-50%, 50%);
+        opacity: 0,5;
+    }
+    100% {
+        -webkit-transform: scale(1) translate(-50%, 50%);
+        opacity: 0;
+    }
+}
+
+@keyframes click-anim-2  {
+    0% {transform: scale(1) translate(-50%, 50%); opacity: 1;}
+    50% {transform: scale(0.9) translate(-50%, 50%); opacity: 0,5;}
+    100% {transform: scale(1) translate(-50%, 50%);  opacity: 0;}
+}
+
+.click-anim-2 {
+    animation-name: click-anim-2;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}

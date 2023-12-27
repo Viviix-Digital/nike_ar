@@ -12,7 +12,6 @@ import ImagesButton from "../../components/ImagesButton";
 const Scene1 = () => {
   const navigate = useNavigate();
   const { isFinish, onFinish } = useWaitFinish();
-
   useRemoveMindAR();
 
   const handleOnClick = () => {
@@ -29,7 +28,7 @@ const Scene1 = () => {
       />
       {isFinish && (
         <ImagesButton
-          className="s1-button"
+          className={`s1-button`}
           images={ImageConfig.Button1}
           onClick={handleOnClick}
         />
