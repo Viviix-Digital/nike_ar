@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { TargetId } from "../../configs/targets";
 
 const STORAGE_KEY = "collected-targets";
 
@@ -13,6 +14,8 @@ const useCollectedTargets = () => {
   }, [collectedTargets]);
 
   const addTarget = (targetId) => {
+    if (!targetId) return;
+    if (!Object.values(TargetId).includes(targetId)) return;
     setCollectedTargets((prevTargets) => {
       if (!prevTargets) return [targetId];
 
@@ -25,11 +28,11 @@ const useCollectedTargets = () => {
     });
   };
 
-  const clear = () => {
+  const clearCollectedTargets = () => {
     window.localStorage.removeItem(STORAGE_KEY);
   };
 
-  return { collectedTargets, addTarget, clear };
+  return { collectedTargets, addTarget, clearCollectedTargets };
 };
 
 export default useCollectedTargets;

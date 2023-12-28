@@ -30,7 +30,7 @@ export const ImageConfig = {
   Nike5: generateImageUrls("/images/n5/", 0, 30, 1),
   Nike6: generateImageUrls("/images/n6/", 0, 30, 1),
   Nike7: generateImageUrls("/images/n7/", 0, 30, 1),
-  Home: generateImageUrls("/images/kv-s1/", 0, 232, 1),
+  Home: generateImageUrls("/images/kv-s1/", 0, 120, 2),
   Guide: generateImageUrls("/images/kv-s2/", 0, 249, 1),
   Completed: generateImageUrls("/images/kv-s6/", 0, 250, 1),
   Congratulations: generateImageUrls("/images/kv-s7/", 0, 249, 1),

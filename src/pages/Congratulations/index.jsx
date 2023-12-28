@@ -7,12 +7,17 @@ import RouteConfig from "../../configs/route";
 import ImagesButton from "../../components/ImagesButton";
 import useWaitFinish from "../../utils/hooks/useWaitFinish";
 import "./styles.css";
+import useRemoveMindAR from "../../utils/hooks/useRemoveMindAR";
+import useCollectedTargets from "../../utils/hooks/useCollectedTargets";
 
 const Congratulations = () => {
+  useRemoveMindAR();
   const navigate = useNavigate();
+  const { clearCollectedTargets } = useCollectedTargets();
   const { isFinish, onFinish } = useWaitFinish();
 
   const handleOnClick = () => {
+    clearCollectedTargets();
     navigate(RouteConfig.Home.path);
   };
 

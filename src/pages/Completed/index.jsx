@@ -7,8 +7,10 @@ import FullContainer from "../../components/FullContainer";
 import useWaitFinish from "../../utils/hooks/useWaitFinish";
 import "./styles.css";
 import FixedBottomNextButton from "../../components/FixedBottomNextButton";
+import useRemoveMindAR from "../../utils/hooks/useRemoveMindAR";
 
 const Completed = () => {
+  useRemoveMindAR();
   const navigate = useNavigate();
   const { isFinish, onFinish } = useWaitFinish();
 
