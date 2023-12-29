@@ -5,8 +5,6 @@ import useScreenOrientation from "./utils/hooks/useScreenOrientation";
 import NotSupportLandscape from "./components/NotSupportLandscape";
 import { Suspense } from "react";
 import Spinner from "./components/Spinner";
-import { preloadImages } from "./utils/preload";
-import { ImageConfig } from "./configs/images";
 
 const router = createBrowserRouter([
   {

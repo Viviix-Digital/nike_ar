@@ -3,6 +3,11 @@
   src: url(fonts/helvetica-neue-medium.ttf);
 }
 
+@font-face {
+  font-family: HelveticaRegular;
+  src: url(fonts/helvetica-neue-regular.ttf);
+}
+
 #root {
   margin: 0 auto;
   padding: 0rem;

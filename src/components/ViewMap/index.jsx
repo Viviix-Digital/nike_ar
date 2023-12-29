@@ -47,9 +47,13 @@ const ViewMap = ({ collectedTargets, onClick }) => {
             </div>
           ))}
         </div>
-        <Button className={"map-button"} onClick={onClick}>
-          Tiếp tục
-        </Button>
+        <div>
+          <div className="map-button-container">
+            <Button className={"map-button"} onClick={onClick}>
+              Tiếp tục
+            </Button>
+          </div>
+        </div>
       </div>
       <ScoreBox score={`${collectedTargets.length}/7`} />
     </div>

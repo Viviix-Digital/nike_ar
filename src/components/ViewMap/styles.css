@@ -37,6 +37,13 @@
     width: 100%;
 }
 
+.map-button-container {
+    height: calc(100vw*9/16*0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .map-button {
     margin-bottom: 0px;
 }

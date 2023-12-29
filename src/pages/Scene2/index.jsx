@@ -23,7 +23,7 @@ const Scene2 = () => {
     <FullContainer>
       <ImageAnimation
         images={ImageConfig.Guide}
-        variant={ImageAnimationVariant.ReverseAt}
+        variant={ImageAnimationVariant.Once}
         reverseAt={150}
         onFinish={onFinish}
       />

@@ -1,4 +1,3 @@
-import "mind-ar/dist/mindar-image.prod";
 import "aframe";
 import "mind-ar/dist/mindar-image-aframe.prod";
 import { useEffect, useState } from "react";
