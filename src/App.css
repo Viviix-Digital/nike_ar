@@ -1,16 +1,6 @@
 @font-face {
-  font-family: Nike;
-  src: url(fonts/futura-nd-for-nike-365-cn-xbd.ttf);
-}
-
-@font-face {
   font-family: HelveticaMedium;
   src: url(fonts/helvetica-neue-medium.ttf);
-}
-
-@font-face {
-  font-family: HelveticaRegular;
-  src: url(fonts/helvetica-neue-regular.ttf);
 }
 
 #root {

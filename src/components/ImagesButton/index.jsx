@@ -28,7 +28,7 @@ const ImagesButton = ({ isStart, images, className, onClick, loopAt }) => {
       >
         <ImageAnimation
           images={images}
-          variant={ImageAnimationVariant.LoopAt}
+          variant={ImageAnimationVariant.Reverse}
           loopAt={loopAt}
           onLoaded={handleOnLoaded}
         />

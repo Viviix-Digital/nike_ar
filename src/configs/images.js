@@ -34,7 +34,7 @@ export const ImageConfig = {
   Guide: generateImageUrls("/images/kv-s2/", 0, 249, 1),
   Completed: generateImageUrls("/images/kv-s6/", 0, 250, 1),
   Congratulations: generateImageUrls("/images/kv-s7/", 0, 249, 1),
-  Button1: generateImageUrls("/images/button_1/", 1, 124),
+  Button1: generateImageUrls("/images/button_1/", 1, 50, 1),
   Button2: generateImageUrls("/images/button_2/", 1, 124),
   Button3: generateImageUrls("/images/button_3/", 0, 100),
   Button4: generateImageUrls("/images/button_4/", 0, 249),
