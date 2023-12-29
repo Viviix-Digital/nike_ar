@@ -1,0 +1,1 @@
+import{j as t}from"./index-N5mnXMyz.js";import{c as n}from"./index-BUFSulxI.js";const m=({isStart:o,images:s,onClick:e})=>t.jsx("div",{className:"fixed-button-container",children:t.jsx(n,{className:"next-button",images:s,onClick:e,isStart:o})});export{m as F};
