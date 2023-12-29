@@ -27,12 +27,11 @@ const Scene2 = () => {
         reverseAt={150}
         onFinish={onFinish}
       />
-      {isFinish && (
-        <FixedBottomNextButton
-          images={ImageConfig.Button1}
-          onClick={handleOnClick}
-        />
-      )}
+      <FixedBottomNextButton
+        images={ImageConfig.Button1}
+        onClick={handleOnClick}
+        isStart={isFinish}
+      />
     </FullContainer>
   );
 };

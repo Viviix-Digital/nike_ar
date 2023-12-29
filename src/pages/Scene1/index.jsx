@@ -26,13 +26,12 @@ const Scene1 = () => {
         reverseAt={90}
         onFinish={onFinish}
       />
-      {isFinish && (
-        <ImagesButton
-          className={`s1-button`}
-          images={ImageConfig.Button1}
-          onClick={handleOnClick}
-        />
-      )}
+      <ImagesButton
+        className={`s1-button`}
+        images={ImageConfig.Button1}
+        onClick={handleOnClick}
+        isStart={isFinish}
+      />
     </FullContainer>
   );
 };

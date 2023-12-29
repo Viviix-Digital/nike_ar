@@ -1,37 +1,51 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
-import AR from "./pages/AR";
-import Scene1 from "./pages/Scene1";
-import Scene2 from "./pages/Scene2";
-import RouteConfig from "./configs/route";
-import Completed from "./pages/Completed";
-import Congratulations from "./pages/Congratulations";
+import RouteConfig, { Pages } from "./configs/route";
 import useScreenOrientation from "./utils/hooks/useScreenOrientation";
 import NotSupportLandscape from "./components/NotSupportLandscape";
+import { Suspense } from "react";
+import Spinner from "./components/Spinner";
+import { preloadImages } from "./utils/preload";
+import { ImageConfig } from "./configs/images";
 
 const router = createBrowserRouter([
   {
     path: RouteConfig.Home.path,
-    element: <Scene1 />,
+    element: (
+      <Suspense fallback={<Spinner />}>
+        <Pages.Home />
+      </Suspense>
+    ),
   },
   {
     path: RouteConfig.Guide.path,
-    element: <Scene2 />,
+    element: (
+      <Suspense fallback={<Spinner />}>
+        <Pages.Guide />
+      </Suspense>
+    ),
   },
   {
     path: RouteConfig.AR.path,
-    element: <AR />,
-  },
-  {
-    path: RouteConfig.Completed.path,
-    element: <Completed />,
+    element: (
+      <Suspense fallback={<Spinner />}>
+        <Pages.AR />
+      </Suspense>
+    ),
   },
   {
     path: RouteConfig.Congratulations.path,
-    element: <Congratulations />,
+    element: (
+      <Suspense fallback={<Spinner />}>
+        <Pages.Congratulations />
+      </Suspense>
+    ),
   },
 ]);
 function App() {
+  // preloadImages(ImageConfig.Button1);
+  // eslint-disable-next-line no-undef
+  console.log(process.env.NODE_ENV);
   const orientation = useScreenOrientation();
 
   return (

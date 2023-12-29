@@ -1,20 +1,32 @@
 import { useEffect, useState } from "react";
 import "./styles.css";
 import { ImageAnimationVariant } from "./config";
+import Spinner from "../Spinner";
 
 const FPS = 25;
 
 const ImageAnimation = ({
-  images,
+  images = [],
   className,
   variant,
   reverseAt = 0,
   loopAt = 0,
   onFinish,
+  onLoaded,
 }) => {
   const [imgIndex, setImgIndex] = useState(0);
   const [isReverse, setIsReverse] = useState(false);
   const [isFinish, setIsFinish] = useState(false);
+  const [loadedCount, setLoadedCount] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    if (isLoaded) return;
+    if (loadedCount < images.length) return;
+    setIsLoaded(true);
+    if (!onLoaded) return;
+    onLoaded();
+  }, [loadedCount, images.length, isLoaded, onLoaded]);
 
   useEffect(() => {
     if (!isFinish) return;
@@ -37,6 +49,7 @@ const ImageAnimation = ({
 
   useEffect(() => {
     if (!images) return;
+    if (!isLoaded) return;
     if (isReverse) return;
     const intervalId = setInterval(() => {
       setImgIndex((prevIndex) => {
@@ -62,7 +75,7 @@ const ImageAnimation = ({
     return () => {
       clearInterval(intervalId);
     };
-  }, [setImgIndex, images, isReverse, variant, loopAt]);
+  }, [setImgIndex, images, isReverse, variant, loopAt, isLoaded]);
 
   useEffect(() => {
     if (!images) return;
@@ -90,17 +103,24 @@ const ImageAnimation = ({
       clearInterval(intervalId);
     };
   }, [isReverse, images, reverseAt, variant]);
+
+  const handleOnLoad = () => {
+    setLoadedCount((prevCount) => ++prevCount);
+  };
   return (
     <>
-      {images.map((item) => (
-        <img
-          key={item}
-          className={`info-img ${className ? className : undefined} ${
-            item === images[imgIndex] ? "show" : ""
-          }`}
-          src={item}
-        />
-      ))}
+      {images &&
+        images.map((item) => (
+          <img
+            key={item}
+            className={`info-img ${className ? className : undefined} ${
+              isLoaded && item === images[imgIndex] ? "show" : ""
+            }`}
+            src={item}
+            onLoad={handleOnLoad}
+          />
+        ))}
+      {!isLoaded && <Spinner />}
     </>
   );
 };

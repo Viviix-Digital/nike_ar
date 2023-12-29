@@ -39,10 +39,9 @@ const ViewMap = ({ collectedTargets, onClick }) => {
           {collectedTargets.map((targetId) => (
             <div key={targetId} className={getClassNameOfTarget(targetId)}>
               <ImageAnimation
-                images={() => {
-                  const target = Targets.find((item) => item.Id === targetId);
-                  target ? target.PiceImages : [];
-                }}
+                images={
+                  Targets.find((item) => item.Id === targetId).PiceImages || []
+                }
                 variant={ImageAnimationVariant.Loop}
               />
             </div>
