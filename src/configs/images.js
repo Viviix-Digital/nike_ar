@@ -20,7 +20,7 @@ export const ImageConfig = {
   Infomation2: generateImageUrls("/images/info2/", 0, 125, 2),
   Infomation3: generateImageUrls("/images/info3/", 0, 125, 2),
   Infomation4: generateImageUrls("/images/info4/", 0, 125, 2),
-  Infomation5: generateImageUrls("/images/info5/", 0, 125, 2),
+  Infomation5: generateImageUrls("/images/info5/", 0, 125, 3),
   Infomation6: generateImageUrls("/images/info6/", 0, 130, 2),
   Infomation7: generateImageUrls("/images/info7/", 0, 125, 2),
   Nike1: generateImageUrls("/images/n1/", 0, 30, 1),

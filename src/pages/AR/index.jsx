@@ -1,12 +1,11 @@
 import "aframe";
 import "mind-ar/dist/mindar-image-aframe.prod";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import { Targets } from "../../configs/targets";
 import useCollectedTargets from "../../utils/hooks/useCollectedTargets";
 import { Components } from "../../configs/route";
-import Spinner from "../../components/Spinner";
 
 const ARState = {
   Initialize: "Initialize",
@@ -120,11 +119,11 @@ const AR = () => {
 
   // After collecting. Check state to re-scanning or show completed effect
   useEffect(() => {
-    if (arState !== ARState.Collection) return;
-    if (!isCollectedFoundTarget) return;
     let timer;
 
     if (collectedTargets.length < 7) {
+      if (arState !== ARState.Collection) return;
+      if (!isCollectedFoundTarget) return;
       timer = setTimeout(() => {
         setARState(ARState.Scanning);
         setIsCollectedFoundTarget(false);
@@ -132,6 +131,7 @@ const AR = () => {
       }, 1000);
     } else {
       // navigate(RouteConfig.Completed.path);
+      if (arState === ARState.Completed) return;
       timer = setTimeout(() => {
         setARState(ARState.Completed);
         setIsCollectedFoundTarget(false);

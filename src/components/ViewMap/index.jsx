@@ -5,6 +5,12 @@ import ImageAnimation from "../ImageAnimation";
 import { ImageAnimationVariant } from "../ImageAnimation/config";
 import ScoreBox from "../ScoreBox";
 import "./styles.css";
+import grayMap1 from "../../assets/map_1.webp";
+import grayMap2 from "../../assets/map_2.webp";
+import grayMap3 from "../../assets/map_3.webp";
+import grayMap4 from "../../assets/map_4.webp";
+import grayMap5 from "../../assets/map_5.webp";
+import grayMap6 from "../../assets/map_6.webp";
 
 const ViewMap = ({ collectedTargets, onClick }) => {
   const getClassNameOfTarget = (targetId) => {
@@ -36,11 +42,24 @@ const ViewMap = ({ collectedTargets, onClick }) => {
         </div>
         <div className="map-img-container">
           <img className="map-img" src={mapImg} />
+          {collectedTargets.findIndex((item) => item === TargetId.One) ===
+            -1 && <img className="gray-img" src={grayMap1} />}
+          {collectedTargets.findIndex((item) => item === TargetId.Two) ===
+            -1 && <img className="gray-img" src={grayMap2} />}
+          {collectedTargets.findIndex((item) => item === TargetId.Three) ===
+            -1 && <img className="gray-img" src={grayMap3} />}
+          {collectedTargets.findIndex((item) => item === TargetId.Four) ===
+            -1 && <img className="gray-img" src={grayMap4} />}
+          {collectedTargets.findIndex((item) => item === TargetId.Five) ===
+            -1 && <img className="gray-img" src={grayMap5} />}
+          {collectedTargets.findIndex((item) => item === TargetId.Six) ===
+            -1 && <img className="gray-img" src={grayMap6} />}
+
           {collectedTargets.map((targetId) => (
             <div key={targetId} className={getClassNameOfTarget(targetId)}>
               <ImageAnimation
                 images={
-                  Targets.find((item) => item.Id === targetId).PiceImages || []
+                  Targets.find((item) => item.Id === targetId)?.PiceImages || []
                 }
                 variant={ImageAnimationVariant.Loop}
               />

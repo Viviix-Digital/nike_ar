@@ -20,18 +20,21 @@ const Congratulations = () => {
 
   return (
     <FullContainer>
-      <ImageAnimation
-        images={ImageConfig.Congratulations}
-        variant={ImageAnimationVariant.Once}
-        // reverseAt={117}
-        onFinish={onFinish}
-      />
-      <ImagesButton
-        className="receive-button"
-        images={ImageConfig.Button3}
-        onClick={handleOnClick}
-        isStart={isFinish}
-      />
+      <div className="hd-container">
+        <ImageAnimation
+          images={ImageConfig.Congratulations}
+          variant={ImageAnimationVariant.Once}
+          // reverseAt={117}
+          fps={35}
+          onFinish={onFinish}
+        />
+        <ImagesButton
+          className="receive-button"
+          images={ImageConfig.Button3}
+          onClick={handleOnClick}
+          isStart={isFinish}
+        />
+      </div>
     </FullContainer>
   );
 };

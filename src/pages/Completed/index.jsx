@@ -23,6 +23,7 @@ const Completed = () => {
         images={ImageConfig.Completed}
         variant={ImageAnimationVariant.Once}
         // reverseAt={107}
+        fps={30}
         onFinish={onFinish}
       />
       <FixedBottomNextButton

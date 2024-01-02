@@ -1,4 +1,12 @@
 .receive-button {
-    position: fixed;
-    bottom: 35%;
+    position: absolute;
+    margin-top: 25%;
+}
+
+.hd-container {
+    height: calc(100vw*9/16*0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }

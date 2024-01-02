@@ -11,7 +11,7 @@ const Information = ({ images, onNext }) => {
     <div className="info-container">
       <ImageAnimation
         images={images}
-        variant={ImageAnimationVariant.Reverse}
+        variant={ImageAnimationVariant.Once}
         onFinish={onFinish}
       />
       {isFinish && (

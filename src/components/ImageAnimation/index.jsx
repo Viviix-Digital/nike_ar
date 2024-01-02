@@ -3,9 +3,10 @@ import "./styles.css";
 import { ImageAnimationVariant } from "./config";
 import Spinner from "../Spinner";
 
-const FPS = 25;
+const DefaultFPS = 25;
 
 const ImageAnimation = ({
+  fps = DefaultFPS,
   images = [],
   className,
   variant,
@@ -71,11 +72,11 @@ const ImageAnimation = ({
             return prevIndex;
         }
       });
-    }, 1000 / FPS);
+    }, 1000 / fps);
     return () => {
       clearInterval(intervalId);
     };
-  }, [setImgIndex, images, isReverse, variant, loopAt, isLoaded]);
+  }, [setImgIndex, images, isReverse, variant, loopAt, isLoaded, fps]);
 
   useEffect(() => {
     if (!images) return;
@@ -98,11 +99,11 @@ const ImageAnimation = ({
         setIsReverse(false);
         return prevIndex;
       });
-    }, 1000 / FPS);
+    }, 1000 / fps);
     return () => {
       clearInterval(intervalId);
     };
-  }, [isReverse, images, reverseAt, variant]);
+  }, [isReverse, images, reverseAt, variant, fps]);
 
   const handleOnLoad = () => {
     setLoadedCount((prevCount) => ++prevCount);
