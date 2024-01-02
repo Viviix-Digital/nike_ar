@@ -1,0 +1,1 @@
+import{r as s}from"./index-pZl99sr1.js";const a=({timeout:e,onExecute:r})=>{const[t,i]=s.useState(!1),c=()=>{i(!0)};return s.useEffect(()=>{if(!t)return;const o=setTimeout(()=>{r()},e);return()=>{clearTimeout(o)}},[e,t,r]),{onTimeoutClick:c,isStartWait:t}};export{a as u};
