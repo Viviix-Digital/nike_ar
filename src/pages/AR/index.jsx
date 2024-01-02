@@ -1,15 +1,12 @@
 import "aframe";
 import "mind-ar/dist/mindar-image-aframe.prod";
-import { useEffect, useState } from "react";
-import Information from "../../components/Information";
+import { Suspense, useEffect, useState } from "react";
 import "./styles.css";
-import Collection from "../../components/Collection";
 import { useNavigate } from "react-router-dom";
-import Completed from "../Completed";
-import ScoreBox from "../../components/ScoreBox";
-import ViewMap from "../../components/ViewMap";
 import { Targets } from "../../configs/targets";
 import useCollectedTargets from "../../utils/hooks/useCollectedTargets";
+import { Components } from "../../configs/route";
+import Spinner from "../../components/Spinner";
 
 const ARState = {
   Initialize: "Initialize",
@@ -27,9 +24,9 @@ const AR = () => {
   const [isCollectedFoundTarget, setIsCollectedFoundTarget] = useState(false);
   const { collectedTargets, addTarget } = useCollectedTargets();
 
-  useEffect(() => {
-    console.log(collectedTargets);
-  }, [collectedTargets]);
+  // useEffect(() => {
+  //   console.log(collectedTargets);
+  // }, [collectedTargets]);
 
   useEffect(() => {
     const uiScanning = document.querySelector(
@@ -62,16 +59,12 @@ const AR = () => {
     // }
 
     const handleArReady = () => {
-      console.log("MindAR is ready");
       setARState(ARState.Scanning);
     };
 
-    const handleArError = () => {
-      console.log("MindAR failed to start");
-    };
+    const handleArError = () => {};
 
     const handleTargetFound = (event) => {
-      console.log("target found");
       const targetId = event.target.id;
       setARState((prevState) => {
         if (prevState !== ARState.Scanning) return prevState;
@@ -80,9 +73,7 @@ const AR = () => {
       });
     };
 
-    const handleTargetLost = () => {
-      console.log("target lost");
-    };
+    const handleTargetLost = () => {};
 
     // arReady event triggered when ready
     sceneEl.addEventListener("arReady", handleArReady);
@@ -195,7 +186,7 @@ const AR = () => {
       </a-scene>
       <div className="ar-content-container">
         {arState === ARState.Information && (
-          <Information
+          <Components.Information
             images={
               Targets.find((item) => item.Id === foundTargetId).InfoImages
             }
@@ -203,7 +194,7 @@ const AR = () => {
           />
         )}
         {arState === ARState.Collection && (
-          <Collection
+          <Components.Collection
             targetId={foundTargetId}
             images={
               Targets.find((item) => item.Id === foundTargetId).NikeImages
@@ -214,15 +205,15 @@ const AR = () => {
             score={`${collectedTargets ? collectedTargets.length : 0}/7`}
           />
         )}
-        {arState === ARState.Completed && <Completed />}
+        {arState === ARState.Completed && <Components.Completed />}
         {arState === ARState.Scanning && (
-          <ScoreBox
+          <Components.ScoreBox
             score={`${collectedTargets ? collectedTargets.length : 0}/7`}
             onClick={handleOnScoreClick}
           />
         )}
         {arState === ARState.ViewMap && (
-          <ViewMap
+          <Components.ViewMap
             collectedTargets={collectedTargets}
             onClick={handleOnMapClick}
           />

@@ -21,16 +21,15 @@ const Completed = () => {
     <FullContainer>
       <ImageAnimation
         images={ImageConfig.Completed}
-        variant={ImageAnimationVariant.ReverseAt}
-        reverseAt={107}
+        variant={ImageAnimationVariant.Once}
+        // reverseAt={107}
         onFinish={onFinish}
       />
-      {isFinish && (
-        <FixedBottomNextButton
-          images={ImageConfig.Button2}
-          onClick={handleOnClick}
-        />
-      )}
+      <FixedBottomNextButton
+        images={ImageConfig.Button2}
+        onClick={handleOnClick}
+        isStart={isFinish}
+      />
     </FullContainer>
   );
 };

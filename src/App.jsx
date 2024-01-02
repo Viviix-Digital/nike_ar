@@ -41,9 +41,6 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  // preloadImages(ImageConfig.Button1);
-  // eslint-disable-next-line no-undef
-  console.log(process.env.NODE_ENV);
   const orientation = useScreenOrientation();
 
   return (

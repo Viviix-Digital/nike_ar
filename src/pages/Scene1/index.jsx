@@ -22,7 +22,7 @@ const Scene1 = () => {
     <FullContainer>
       <ImageAnimation
         images={ImageConfig.Home}
-        variant={ImageAnimationVariant.ReverseAt}
+        variant={ImageAnimationVariant.Once}
         reverseAt={90}
         onFinish={onFinish}
       />

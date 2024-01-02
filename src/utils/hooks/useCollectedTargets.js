@@ -6,7 +6,11 @@ const STORAGE_KEY = "collected-targets";
 const useCollectedTargets = () => {
   const [collectedTargets, setCollectedTargets] = useState(() => {
     const stickyValue = window.localStorage.getItem(STORAGE_KEY);
-    return stickyValue !== null ? stickyValue.split(",") : [];
+
+    if (!stickyValue) {
+      return [];
+    }
+    return stickyValue.split(",");
   });
 
   useEffect(() => {

@@ -36,8 +36,8 @@ const Button = ({
       <div className="nk-button-container">
         <ImageAnimation
           images={ImageConfig.Button4}
-          variant={ImageAnimationVariant.ReverseAt}
-          loopAt={25}
+          variant={ImageAnimationVariant.Reverse}
+          // loopAt={25}
           onLoaded={handleOnLoaded}
         />
         <button className={`nk-button `} onClick={onTimeoutClick}>
