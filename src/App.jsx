@@ -41,16 +41,12 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  const orientation = useScreenOrientation();
+  const isPortrait = useScreenOrientation();
 
   return (
     <>
-      {(orientation === "portrait-primary" ||
-        orientation === "portrait-secondary") && (
-        <RouterProvider router={router} />
-      )}
-      {(orientation === "landscape-primary" ||
-        orientation === "portrait-secondary") && <NotSupportLandscape />}
+      {isPortrait && <RouterProvider router={router} />}
+      {!isPortrait && <NotSupportLandscape />}
     </>
   );
 }

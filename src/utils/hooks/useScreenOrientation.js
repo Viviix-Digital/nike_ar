@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
 
-const getOrientation = () => window.screen.orientation.type;
-
 const useScreenOrientation = () => {
-  const [orientation, setOrientation] = useState(getOrientation());
+  const [isPortrait, setIsPortrait] = useState(
+    window.outerWidth / window.outerHeight < 1
+  );
 
   const updateOrientation = () => {
-    setOrientation(getOrientation());
+    setIsPortrait(window.outerWidth / window.outerHeight < 1);
   };
 
   useEffect(() => {
-    window.addEventListener("orientationchange", updateOrientation);
+    window.addEventListener("resize", updateOrientation);
     return () => {
-      window.removeEventListener("orientationchange", updateOrientation);
+      window.removeEventListener("resize", updateOrientation);
     };
   }, []);
 
-  return orientation;
+  return isPortrait;
 };
 
 export default useScreenOrientation;
