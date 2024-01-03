@@ -8,10 +8,6 @@
   src: url(fonts/helvetica-neue-regular.ttf);
 }
 
-body {
-    background-color: black;
-}
-
 #root {
   margin: 0 auto;
   padding: 0rem;
