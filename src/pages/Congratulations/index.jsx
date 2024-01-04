@@ -7,15 +7,24 @@ import useWaitFinish from "../../utils/hooks/useWaitFinish";
 import "./styles.css";
 import useRemoveMindAR from "../../utils/hooks/useRemoveMindAR";
 import useCollectedTargets from "../../utils/hooks/useCollectedTargets";
+import useSaveDeviceGoogleForm from "../../utils/hooks/useSaveDeviceGoogleForm";
+import { useState } from "react";
+import Spinner from "../../components/Spinner";
 
 const Congratulations = () => {
   useRemoveMindAR();
   const { clearCollectedTargets } = useCollectedTargets();
   const { isFinish, onFinish } = useWaitFinish();
+  const { saveDevice } = useSaveDeviceGoogleForm();
+  const [isSending, setIsSending] = useState(false);
 
-  const handleOnClick = () => {
-    clearCollectedTargets();
-    window.location.href = "https://landingpage.acfc.com.vn/survey/nike";
+  const handleOnClick = async () => {
+    setIsSending(true);
+    saveDevice().finally(() => {
+      setIsSending(false);
+      clearCollectedTargets();
+      window.location.href = "https://landingpage.acfc.com.vn/survey/nike";
+    });
   };
 
   return (
@@ -35,6 +44,11 @@ const Congratulations = () => {
           isStart={isFinish}
         />
       </div>
+      {isSending && (
+        <div className="spinner-container">
+          <Spinner />
+        </div>
+      )}
     </FullContainer>
   );
 };
