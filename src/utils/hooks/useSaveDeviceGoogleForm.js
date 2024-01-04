@@ -10,6 +10,24 @@ let formUrl = `https://docs.google.com/forms/d/e/1FAIpQLSe9IcHwYqSM5pMQ4eof7K6bB
 const PLAY_TIMES_KEY = "play-times";
 
 const useSaveDeviceGoogleForm = () => {
+  const generateDateStr = () => {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+
+    let mm = today.getMonth() + 1; // Months start at 0!
+    let dd = today.getDate();
+
+    if (dd < 10) dd = "0" + dd;
+    if (mm < 10) mm = "0" + mm;
+
+    const formattedToday = yyyy + "-" + mm + "-" + dd;
+    return formattedToday;
+  };
+
+  const generateTime = () => {
+    const date = new Date();
+    return `${date.getHours()}:${date.getMinutes()}`;
+  };
   const saveDevice = async () => {
     let times = window.localStorage.getItem(PLAY_TIMES_KEY);
     if (!times) times = 0;
@@ -19,17 +37,10 @@ const useSaveDeviceGoogleForm = () => {
     formUrl = formUrl.replace(BrowserKey, browser.name);
     formUrl = formUrl.replace(BrowserVersionKey, browser.version);
 
-    const date = new Date();
-    formUrl = formUrl.replace(
-      DateKey,
-      `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`
-    );
-    formUrl = formUrl.replace(
-      TimeKey,
-      `${date.getHours()}:${date.getMinutes()}`
-    );
-    console.log(formUrl);
-    const response = await fetch(formUrl);
+    formUrl = formUrl.replace(DateKey, generateDateStr());
+    formUrl = formUrl.replace(TimeKey, generateTime());
+
+    const response = await fetch(formUrl, { mode: "no-cors" });
     if (response.status == 200) {
       window.localStorage.setItem(PLAY_TIMES_KEY, 1);
     }
