@@ -25,8 +25,14 @@ const useSaveDeviceGoogleForm = () => {
   };
 
   const generateTime = () => {
-    const date = new Date();
-    return `${date.getHours()}:${date.getMinutes()}`;
+    const today = new Date();
+    let hh = today.getHours();
+    let mm = today.getMinutes();
+
+    if (hh < 10) hh = "0" + hh;
+    if (mm < 10) mm = "0" + mm;
+
+    return `${hh}:${mm}`;
   };
   const saveDevice = async () => {
     let times = window.localStorage.getItem(PLAY_TIMES_KEY);
@@ -41,10 +47,8 @@ const useSaveDeviceGoogleForm = () => {
     formUrl = formUrl.replace(DateKey, generateDateStr());
     formUrl = formUrl.replace(TimeKey, generateTime());
 
-    const response = await fetch(formUrl, { mode: "no-cors" });
-    if (response.status == 0) {
-      window.localStorage.setItem(PLAY_TIMES_KEY, 1);
-    }
+    await fetch(formUrl, { mode: "no-cors" });
+    window.localStorage.setItem(PLAY_TIMES_KEY, 1);
   };
 
   return {
