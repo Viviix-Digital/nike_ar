@@ -18,7 +18,8 @@ const Congratulations = () => {
   const { saveDevice } = useSaveDeviceGoogleForm();
   const [isSending, setIsSending] = useState(false);
 
-  const handleOnClick = async () => {
+  const handleOnClick = () => {
+    if (isSending) return;
     setIsSending(true);
     saveDevice().finally(() => {
       setIsSending(false);
