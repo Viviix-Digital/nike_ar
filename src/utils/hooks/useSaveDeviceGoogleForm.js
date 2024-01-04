@@ -30,6 +30,7 @@ const useSaveDeviceGoogleForm = () => {
   };
   const saveDevice = async () => {
     let times = window.localStorage.getItem(PLAY_TIMES_KEY);
+
     if (!times) times = 0;
     if (times > 0) return;
 
@@ -41,7 +42,7 @@ const useSaveDeviceGoogleForm = () => {
     formUrl = formUrl.replace(TimeKey, generateTime());
 
     const response = await fetch(formUrl, { mode: "no-cors" });
-    if (response.status == 200) {
+    if (response.status == 0) {
       window.localStorage.setItem(PLAY_TIMES_KEY, 1);
     }
   };
