@@ -1,1 +1,1 @@
-sudo certbot --expand -d 'nikehotay.com,assets.nikehotay.com'
+sudo certbot certonly --expand -d 'nikehotay.com,assets.nikehotay.com'
