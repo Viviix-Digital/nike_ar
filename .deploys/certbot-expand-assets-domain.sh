@@ -1,0 +1,1 @@
+sudo certbot --expand -d 'assets.nikehotay.com'
