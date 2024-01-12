@@ -5,8 +5,8 @@ server {
 }
 
 server {
-  listen 443 ssl http2 default_server;
-  listen [::]:443 ssl http2 default_server;
+  listen 443 ssl http2;
+  listen [::]:443 ssl http2;
 
   server_name www.nikehotay.com nikehotay.com;
   ssl_certificate /etc/letsencrypt/live/nikehotay.com-0001/fullchain.pem;
