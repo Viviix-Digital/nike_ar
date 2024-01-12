@@ -1,5 +1,22 @@
 server {
-  server_name www.nikehotay.com nikehotay.com;
+      listen 80;
+      hostname www.nikehotay.com nikehotay.com;
+      rewrite ^ https://ar.nikehotay.com$request_uri? permanent;
+}
+
+server {
+    listen 443 ssl http2 default_server;
+    listen [::]:443 ssl http2 default_server;
+
+    server_name www.nikehotay.com nikehotay.com;
+    ssl_certificate /etc/letsencrypt/live/nikehotay.com-0001/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/nikehotay.com-0001/privkey.pem;
+    include /etc/nginx/conf.d/options-ssl-nginx.conf;
+    rewrite ^ https://ar.nikehotay.com$request_uri? permanent;
+}
+
+server {
+  server_name assets.nikehotay.com;
 
   location ~ /.well-known/acme-challenge {
     allow all;
@@ -18,10 +35,10 @@ server {
   listen 443 ssl http2 default_server;
   listen [::]:443 ssl http2 default_server;
 
-  server_name www.nikehotay.com nikehotay.com;
+  server_name assets.nikehotay.com;
 
-  ssl_certificate /etc/letsencrypt/live/nikehotay.com/fullchain.pem;
-  ssl_certificate_key /etc/letsencrypt/live/nikehotay.com/privkey.pem;
+  ssl_certificate /etc/letsencrypt/live/nikehotay.com-0001/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/nikehotay.com-0001/privkey.pem;
 #  include snippets/ssl-params.conf;
 
   include /etc/nginx/conf.d/options-ssl-nginx.conf;

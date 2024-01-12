@@ -1,1 +1,0 @@
-sudo certbot certonly --manual --preferred-challenges dns --expand -d 'nikehotay.com,assets.nikehotay.com'
