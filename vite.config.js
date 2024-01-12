@@ -8,6 +8,5 @@ export default defineConfig({
       util: "util",
     },
   },
-  base: "https://assets.nikehotay.com/",
   plugins: [react()],
 });
