@@ -8,5 +8,6 @@ export default defineConfig({
       util: "util",
     },
   },
+  base: "https://ewobioki7tweb.vcdn.cloud/",
   plugins: [react()],
 });
