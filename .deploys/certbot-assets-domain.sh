@@ -1,0 +1,1 @@
+sudo certbot certonly --manual --preferred-challenges dns --key-type rsa -d 'assets.nikehotay.com'
