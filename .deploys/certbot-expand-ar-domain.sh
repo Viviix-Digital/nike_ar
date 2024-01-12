@@ -1,1 +1,1 @@
-sudo certbot certonly --manual --preferred-challenges dns --key-type rsa --expand -d 'nikehotay.com,ar.nikehotay.com'
+sudo certbot certonly --manual --preferred-challenges dns --key-type rsa --expand -d 'nikehotay.com,assets.nikehotay.com,ar.nikehotay.com'
